@@ -1,12 +1,35 @@
-int A = 10; // A는 1000부터 2000까지 반복
+#include <afstandssensor.h>
 
-void setup()
-{
-  Serial.begin(9600); // 시리얼 통신 시작
+#define n 300
 
-  Serial.print("Q"); 
-  Serial.print(A);
-  Serial.println();  // new line
+AfstandsSensor afstandssensor(13, 12);
+
+
+int echoPin = 12;
+int trigPin = 13;
+int int_sum = 0;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.print("Q");
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+
+  float duration, distance;
+  float sum = 0;
+  
+  // echoPin 이 HIGH를 유지한 시간을 저장 한다.
+  for(int i=0; i<n; i++){
+    digitalWrite(trigPin, HIGH);
+    delay(10);
+    digitalWrite(trigPin, LOW);
+    duration = pulseIn(echoPin, HIGH); 
+    distance = ((float)(340 * duration) / 10000) / 2;  
+    sum += distance;
+  }
+  int_sum = floor(sum / n);
+  Serial.print(int_sum);
+  Serial.println();
 }
 
 void loop()
