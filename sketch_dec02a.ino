@@ -7,7 +7,7 @@ AfstandsSensor afstandssensor(13, 12);
 
 int echoPin = 12;
 int trigPin = 13;
-int int_sum = 0;
+float sum = 0, temp;
 
 void setup() {
   Serial.begin(9600);
@@ -27,19 +27,11 @@ void setup() {
     distance = ((float)(340 * duration) / 10000) / 2;  
     sum += distance;
   }
-  int_sum = floor(sum / n);
-  Serial.print(int_sum);
+  temp = sum / n;
+  Serial.print(temp);
   Serial.println();
 }
 
 void loop()
 { 
-//  A+=1;
-//  
-//  Serial.print("Q"); 
-//  Serial.print(A);
-//  Serial.println();  // new line
-//
-//  if(A==2000)
-//  {A = 1000;}
 }
