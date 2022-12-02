@@ -7,11 +7,11 @@ BaudRate = 9600
 ARD= serial.Serial(PORT,BaudRate)
 
 
-def Decode(A):
-    A = A.decode()
-    A = str(A)
-    if A[0]=='Q':                       
-        Ard1=int(A[1:3])
+def Decode(int_sum):
+    int_sum = int_sum.decode()
+    int_sum = str(int_sum)
+    if int_sum[0]=='Q':                       
+        Ard1=int(int_sum[1:3])
         result= Ard1
         return result
     
