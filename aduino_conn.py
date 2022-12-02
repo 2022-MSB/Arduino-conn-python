@@ -11,8 +11,9 @@ def Decode(int_sum):
     int_sum = int_sum.decode()
     int_sum = str(int_sum)
     if int_sum[0]=='Q':                       
-        Ard1=int(int_sum[1:3])
-        result= Ard1
+        Ard1=str(int_sum[1:2])
+        Ard2=str(int_sum[3:5])
+        result= [Ard1, Ard2]
         return result
     
 def Ardread(): # return list [Ard1,Ard2]
@@ -26,4 +27,7 @@ def Ardread(): # return list [Ard1,Ard2]
 
 
 temp = Ardread()
-print(temp)
+# print(temp[0])
+# print(float(temp[1]) * 0.01)
+result = float(temp[0]) + (float(temp[1]) * 0.01)
+# print(result)
